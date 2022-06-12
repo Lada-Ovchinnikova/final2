@@ -11,7 +11,6 @@ class CartController {
         $this->cartModel = new Cart();
         $this->isAuthorized = (new User())->userIsAuthorized();
         $this->isAdmin = (new User())->userIsAdmin();
-
     }
 
     public function actionIndex()
