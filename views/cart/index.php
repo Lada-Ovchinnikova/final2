@@ -60,7 +60,7 @@
         </div>
         <div class="cart-total-final-wrapper">
             <span class="cart-total-final">Итого</span>
-            <span class="cart-total-sum"> 1500</span> <span>p.</span>
+            <span class="cart-total-sum"> <?= $this->item; ?></span> <span>p.</span>
         </div>
         <div class="cart-submit">
             <button type="submit" name="submit">Оформить заказ</button>

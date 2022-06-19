@@ -18,6 +18,18 @@ class Cart
 
     }
 
+    public function getTotalprice()
+    {
+        $item = 0;
+        $products = json_decode($_COOKIE['items'], true);
+
+        foreach ($products as $product) {
+            $item += $product['final'];
+        }
+
+        return $item;
+    }
+
     public function addOrder ($id)
     {
         $id = mysqli_real_escape_string($this->connect, $id);

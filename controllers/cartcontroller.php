@@ -5,12 +5,14 @@ class CartController {
     private $cartModel;
     public $isAuthorized;
     public $isAdmin;
+    public $item;
 
     public function __construct()
     {
         $this->cartModel = new Cart();
         $this->isAuthorized = (new User())->userIsAuthorized();
         $this->isAdmin = (new User())->userIsAdmin();
+        $this->item = (new Cart())->getTotalprice();
     }
 
     public function actionIndex()
