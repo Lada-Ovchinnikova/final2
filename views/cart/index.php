@@ -2,7 +2,7 @@
 
 <form action="C:\xampp\htdocs\final\controllers\cartcontroller.php" method="post">
     <div class="cart-table">
-        <div>
+        <div class ="actionss">
             <div class="item-headings">
                 <div class="item-img1">
                 </div>
@@ -20,7 +20,7 @@
             </div>
 
             <? foreach ($items as $item): ?>
-            <div class="item" product_id="<?= $item['id']; ?>">
+            <div class="item" >
                 <input
                         type="text"
                         class="form-control visually-hidden-cost"
@@ -33,20 +33,22 @@
                 <div class="item-desc">
                     <p class="item-title"><?= $item['name']; ?></p>
                     <span class="item-weight"><?= $item['weight']; ?> г.</span>
-                    <span class="item-del">Удалить</span>
+                    <span class="item-del js-del" product_id="<?= $item['id']; ?>">Удалить</span>
                 </div>
                 <div class="item-price">
-                    <span class="item-weight"><?= $item['price']; ?> p.</span>
+                    <span class="item-price  price-for-<?= $item['id']; ?>"><?= $item['price']; ?></span> <span>p.</span>
                 </div>
                 <div class="item-amount">
                     <div class="qty counter-control">
-                        <span class="qty-minus">-</span>
-                        <input class="item-amount-qty qty-value" type="text" value="<?= $item['qty']; ?>" id="counter_input">
-                        <span class="qty-plus">+</span>
+                        <span class="qty-minus qty-id cart-qty-minus" product_id="<?= $item['id']; ?>">-</span>
+                        <input class="item-amount-qty qty-value add-itm-cart"
+                               product_id="<?= $item['id']; ?>" product_sku="<?= $item['img']; ?>" product_img="product_<?= $item['img']; ?>.jpg" product_price="<?= $item['price']; ?>" product_name="<?= $item['name']; ?>" product_weight="<?= $item['weight']; ?>"
+                               type="text" value="<?= $item['qty']; ?>" id="counter_input" readonly>
+                        <span class="qty-plus qty-id cart-qty-plus" product_id="<?= $item['id']; ?>">+</span>
                     </div>
                 </div>
                 <div class="item-final">
-                    <span class="item-final-price"><?= $item['final']; ?> p.</span>
+                    <span class="item-final-price final-price-for-<?= $item['id']; ?>"><?= $item['final']; ?></span> <span>p.</span>
                 </div>
             </div>
             <? endforeach; ?>
@@ -58,13 +60,16 @@
         </div>
         <div class="cart-total-final-wrapper">
             <span class="cart-total-final">Итого</span>
-            <span class="cart-total-sum"> 1500 ₽</span>
+            <span class="cart-total-sum"> 1500</span> <span>p.</span>
         </div>
         <div class="cart-submit">
             <button type="submit" name="submit">Оформить заказ</button>
         </div>
     </div>
 </form>
+
+
+
 <!--    <form action="action.php" method="post">-->
 <!--        <p>Ваше имя: <input type="text" name="name" /></p>-->
 <!--        <p>Ваш возраст: <input type="text" name="age" /></p>-->

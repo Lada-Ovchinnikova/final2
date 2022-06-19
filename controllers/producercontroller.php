@@ -1,17 +1,20 @@
 <?php
-//include_once('./models/catalogue.php');
 class ProducerController {
 
     private $producerModel;
+    public $isAuthorized;
+    public $isAdmin;
 
     public function __construct()
     {
         $this->producerModel = new Producer();
+        $this->isAuthorized = (new User())->userIsAuthorized();
+        $this->isAdmin = (new User())->userIsAdmin();
+        $this->connection = DB::getConnection();
     }
     public function actionIndex()
     {
         $title = 'Производители';
-        //$userIsAuthorized =  true;
         $producers = $this->producerModel->getAll();
         include_once('./views/producer/index.php');
     }

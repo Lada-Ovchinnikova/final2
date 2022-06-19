@@ -5,11 +5,9 @@
     <tr>
         <th>ID</th>
         <th>Категория</th>
-       <? if ($userIsAuthorized): ?>
             <th>
                 Действия
             </th>
-        <?endif; ?>
     </tr>
     </thead>
     <tbody>

@@ -8,8 +8,14 @@ class Cart
     }
     public function getAll()
     {
-        $items = json_decode($_COOKIE['items'], true);
-        return $items;
+        if (isset($_COOKIE['items'])){
+            $items = json_decode($_COOKIE['items'], true);
+            return $items;
+        } else {
+            //echo "Карзина пуста";
+            return false;
+        }
+
     }
 
     public function addOrder ($id)

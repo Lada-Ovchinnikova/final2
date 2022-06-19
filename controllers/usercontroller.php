@@ -142,15 +142,25 @@ class UserController {
         $title = 'История заказов';
 
         $userId = $this->userModel->getId();
-        $orders= $this->userModel->getOrders($userId);
+        $userStatus = $this->userModel->getStatus($userId);
+        $orders= $this->userModel->getOrders($userId, $userStatus);
         include_once('./views/user/history.php');
     }
 
     public function actionView($orderName)
     {
         $title = 'Заказ ' . $orderName;
-        $products = $this->userModel->getProductsByOrderName($orderName);
+        $userId = $this->userModel->getId();
+        $userStatus = $this->userModel->getStatus($userId);
+        $products = $this->userModel->getProductsByOrderName($orderName, $userStatus);
         include_once('./views/user/view.php');
+    }
+    public function actionLogout()
+    {
+        $title = 'Выход';
+        $this->userModel->logout();
+        header('Location:  ' . FULL_SITE_ROOT . 'catalogues');
+        include_once('./views/user/logout.php');
     }
 
 }

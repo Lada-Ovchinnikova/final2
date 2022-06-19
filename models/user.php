@@ -154,28 +154,38 @@ class user
     public function userIsAdmin()
     {
         $isAdmin = 0;
-        echo "изначально я здесь";
+        //echo "изначально я здесь";
         if (isset($_COOKIE['ustatus'])) {
             $statusId= $_COOKIE['ustatus'];
             echo $statusId;
             if ($statusId == 2) {
                 $isAdmin = 2;
                 //echo ($_COOKIE['ustatus']);
-                echo 'опустился сюда';
+                //echo 'опустился сюда';
             } else if (isset($_COOKIE['ustatus']) == 1) {
                 $isAdmin = 1;
-                echo 'а теперь опустился сюда админ равен одному';
+                //echo 'а теперь опустился сюда админ равен одному';
             }
         }
         return $isAdmin;
     }
-    public function getOrders($userId)
+    public function getOrders($userId, $userStatus)
     {
-        $query = "
+        if ($userStatus == 1)
+        {
+            $query = "
             SELECT `order_name` 
             FROM `orders`
             WHERE  `order_user_id` = '$userId';
             ";
+        } else {
+
+            $query = "
+            SELECT `order_name`, `order_user_id` 
+            FROM `orders`
+            GROUP BY `order_name`;
+            ";
+        }
         $result = mysqli_query($this->connection, $query);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
@@ -186,16 +196,38 @@ class user
         return $userId;
     }
 
-    public function getProductsByOrderName($orderName)
+    public function getProductsByOrderName($orderName, $userStatus)
     {
-        $query = "
+        if ($userStatus == 1) {
+            $query = "
             SELECT * 
             FROM `orders`
             WHERE  `order_name` = '$orderName';
             ";
+        } else {
+            $query = "
+            SELECT * 
+            FROM `orders`
+            LEFT JOIN  `users` ON `user_id`=`order_user_id`
+            WHERE  `order_name` = '$orderName'   
+;
+            ";
+        }
         $result = mysqli_query($this->connection, $query);
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 
+    public function logout()
+    {
+        setcookie('uid', '', time() - 3600, '/');
+        setcookie('ustatus', '', time() - 3600, '/');
+        setcookie('token', '', time() - 3600, '/');
+        setcookie('t_token', '', -3600, '/');
+        setcookie('t_token', '', -3600, '/');
+        if (isset($_COOKIE['items'])) {
+            setcookie('items', '', -3600, '/');
+        }
+
+    }
 
 }

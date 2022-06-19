@@ -48,14 +48,21 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Пользователь</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item  <?= $title === 'Личный кабинет' ? 'active' : ''; ?>"  href="<?= FULL_SITE_ROOT . 'account'; ?>">Личный кабинет</a></li>
+                        <li><a class="dropdown-item  <?= $title === 'Личный кабинет' ? 'active' : ''; ?>"  href="<?= FULL_SITE_ROOT . 'account/' . $_COOKIE['uid']; ?>">Личный кабинет</a></li>
                         <li><a class="dropdown-item <?= $title === 'История заказов' ? 'active' : ''; ?>" href="<?= FULL_SITE_ROOT . 'orders'; ?>">История заказов</a></li>
                     </ul>
                 </li>
                 <?endif; ?>
+                <? if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
+                    <li class="nav-item">
+                        <a class="nav-link <?= $title === 'История заказов' ? 'active' : ''; ?>" href="<?= FULL_SITE_ROOT . 'orders'; ?>" >История заказов</a>
+                    </li>
+                <?endif; ?>
+                <? if ($this->isAuthorized==true and $this->isAdmin ==1): ?>
                 <li class="nav-item">
                     <a class="nav-link <?= $title === 'Корзина' ? 'active' : ''; ?>" aria-current="page" href="<?= FULL_SITE_ROOT . 'carts'; ?>">Корзина</a>
                 </li>
+                <?endif; ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Войти/Выйти</a>
                     <ul class="dropdown-menu">

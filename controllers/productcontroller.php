@@ -1,11 +1,12 @@
 <?php
-//include_once('./models/product.php');
 class ProductController {
 
     private $productModel;
     private $categoryModel;
     private $producerModel;
     private $connection;
+    public $isAuthorized;
+    public $isAdmin;
 
 
     public function __construct()
@@ -13,6 +14,8 @@ class ProductController {
         $this->productModel = new Product();
         $this->categoryModel = new Category();
         $this->producerModel = new Producer();
+        $this->isAuthorized = (new User())->userIsAuthorized();
+        $this->isAdmin = (new User())->userIsAdmin();
         $this->connection = DB::getConnection();
 
     }

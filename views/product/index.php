@@ -13,11 +13,9 @@
         <th>Производитель</th>
         <th>Категория</th>
 
-        <? if ($userIsAuthorized): ?>
             <th>
                 Действия
             </th>
-        <?endif; ?>
     </tr>
     </thead>
     <tbody>
@@ -32,12 +30,10 @@
             <td><?= $product['product_weight']; ?></td>
             <td><?= $product['producer_name']; ?></td>
             <td><?= $product['category_name']; ?></td>
-              <? if ($userIsAuthorized): ?>
                 <td>
                     <a class="btn btn-warning" href="<?= FULL_SITE_ROOT . 'product/edit/' . $product['product_id']; ?>">Edit</a>
                     <button class="btn btn-danger" onclick="remove('<?= "product"; ?>', <?= $product['product_id']; ?>)">Delete</button>
                 </td>
-            <?endif; ?>
         </tr>
     <? endforeach; ?>
 
