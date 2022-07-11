@@ -197,7 +197,6 @@ class user
     }
 
 
-
     public function getProductsByOrderName($orderName, $userStatus)
     {
         if ($userStatus == 1) {
@@ -231,5 +230,8 @@ class user
         }
 
     }
-
+    public function fff ()
+    {
+        isset($value) ? $value : "Другое значение";
+    }
 }

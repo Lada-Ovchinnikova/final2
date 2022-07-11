@@ -2,7 +2,7 @@
 
 
 <div class="cust-main">
-    <form   action="catalogue/test.php">
+    <form   action="">
         <p>Фильтр</p>
         <!--    <h2>Категории</h2>-->
         <!--    --><?// foreach ($categories as $category): ?>

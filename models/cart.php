@@ -21,6 +21,8 @@ class Cart
     public function getTotalprice()
     {
         $item = 0;
+        if (isset($_COOKIE['items'])) {
+
         $products = json_decode($_COOKIE['items'], true);
 
         foreach ($products as $product) {
@@ -28,6 +30,7 @@ class Cart
         }
 
         return $item;
+            }
     }
 
     public function addOrder ($id)

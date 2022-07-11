@@ -1,7 +1,8 @@
 <? include_once("./views/common/header.php"); ?>
-
+<? if (!empty($items)): ?>
 <form action="C:\xampp\htdocs\final\controllers\cartcontroller.php" method="post">
-    <div class="cart-table">
+
+     <div class="cart-table">
         <div class ="actionss">
             <div class="item-headings">
                 <div class="item-img1">
@@ -18,7 +19,6 @@
                     <span class="">Итого</span>
                 </div>
             </div>
-
             <? foreach ($items as $item): ?>
             <div class="item" >
                 <input
@@ -52,6 +52,7 @@
                 </div>
             </div>
             <? endforeach; ?>
+
         </div>
     </div>
     <div class="cart-total">
@@ -67,6 +68,12 @@
         </div>
     </div>
 </form>
+<?else: ?>
+<span>ffffff</span>
+<?endif; ?>
+
+
+
 
 
 

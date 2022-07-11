@@ -17,7 +17,7 @@ cartTable.addEventListener("click",
                 return
             }
             //checkAndSetCookie()
-            updateAndSetCookie()
+            updateAndSetCookie(newQty, id)
             showFinalPrice(newQty, id);
             showTotalPrice();
         } else {}
@@ -37,7 +37,7 @@ cartTable.addEventListener("click",
             return
         }
         //checkAndSetCookie()
-        updateAndSetCookie()
+        updateAndSetCookie(newQty, id)
         showFinalPrice(newQty, id);
         showTotalPrice();
     }
@@ -125,28 +125,14 @@ function addCokie() {
     return item;
 };
 
-function updateAndSetCookie() {
-    if (getCookie('items') !== undefined) {
+function updateAndSetCookie(newQty, id) {
         let jsonArray = getCookie('items');
+        let toNumberId = +id;
         itemsArray = JSON.parse(jsonArray);
-        let item = addCokie();
-        if (itemsArray.find(iteme => iteme.id === item.id)) {
-            itemsArray.forEach(function(itemd, i) {
-                if (itemd.id === item.id) {
-                    item.qty = item.qty;
-                    item.final = item.qty * item.price;
-                    itemd.qty = item.qty;
-                    itemd.final = item.final;
-                } else {}
-            });
-        } else {
-            itemsArray.push(item);
-            console.log(itemsArray);
-        }
-    } else {}
-    let createCookie = JSON.stringify(itemsArray);
-    console.log(itemsArray);
-    setCookie('items', createCookie, {secure: true, 'max-age': 3600});
+        let neededItem = itemsArray.find(item => item.id === toNumberId);
+        neededItem.qty = newQty;
+        let createCookie = JSON.stringify(itemsArray);
+        setCookie('items', createCookie, {secure: true, 'max-age': 3600});
 }
 
 //стандартные функции для куки
