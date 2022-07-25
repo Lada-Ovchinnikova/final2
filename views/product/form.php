@@ -1,5 +1,5 @@
 <? include_once("./views/common/header.php"); ?>
-    <form  method="POST">
+    <form  method="POST" enctype="multipart/form-data">
         <input
                 type="text"
                 class="form-control"
@@ -36,21 +36,42 @@
                 placeholder="Вес"
                 value="<?= isset($product['product_id']) ?  $product['product_weight'] : '' ?>"
                 name="product_weight"/>
-        <select name="product_category" class="form-select">
-            <? foreach ($categories as $category): ?>
-                <option value="<?= $category['category_id']; ?>"
-                    <?= isset($product) ? (($category['category_id'] === $product['product_category_id']) ? 'selected' : '')  : '' ?>>
-                    <?= $category['category_name']; ?></option>
-            <? endforeach; ?>
-        </select>
+        <div>
+            <p>Категория</p>
+            <select name="product_category" class="form-select">
+                <? foreach ($categories as $category): ?>
+                    <option value="<?= $category['category_id']; ?>"
+                        <?= isset($product) ? (($category['category_id'] === $product['product_category_id']) ? 'selected' : '')  : '' ?>>
+                        <?= $category['category_name']; ?></option>
+                <? endforeach; ?>
+            </select>
+        </div>
 
-        <select name="product_producer" class="form-select">
-            <? foreach ($producers as $producer): ?>
-                <option value="<?= $producer['producer_id']; ?>"
-                    <?= isset($product) ? (($producer['producer_id'] === $product['product_producer_id']) ? 'selected' : '')  : '' ?>>
-                    <?= $producer['producer_name']; ?></option>
-            <? endforeach; ?>
-        </select>
+        <div>
+            <p>Производитель</p>
+            <select name="product_producer" class="form-select">
+                <? foreach ($producers as $producer): ?>
+                    <option value="<?= $producer['producer_id']; ?>"
+                        <?= isset($product) ? (($producer['producer_id'] === $product['product_producer_id']) ? 'selected' : '')  : '' ?>>
+                        <?= $producer['producer_name']; ?></option>
+                <? endforeach; ?>
+            </select>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Основное изображение</label>
+            <input class="form-control" id="formFile"
+                   type="file"
+                   placeholder="Изображение"
+                   value="<?= isset($product['product_id']) ? $product['product_img'] : '' ?>"
+                   name="product_img"/>
+            <p></p>
+            <div class="gallery" id="formPreview">
+                <img src="<?= isset($product['product_id']) ? "../../assets/img/" . $product['product_img'] : '' ?>"  alt="">
+                <button id="deleteImg">Удалить выбранное изображение</button>
+            </div>
+        </div>
 
 
         <div class="col-auto">

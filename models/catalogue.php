@@ -19,6 +19,16 @@ class Catalogue
 
     }
 
+//    public function getAllFilter(checkbox1 = true)
+//    {
+//        if checkbox == True {
+//            $this->getAll();
+//        }
+//        else{
+//
+//        }
+//    }
+
     public function getById($id)
     {
         $query = "

@@ -31,7 +31,7 @@
     <div class="wrapper">
         <? foreach ($catalogue as $catalogueItem): ?>
             <div class="card" style="width: 18rem;">
-                <img src="././assets/img/product_<?= $catalogueItem['product_sku']; ?>.jpg" class="card-img-top" alt="...">
+                <img src="././assets/img/<?= $catalogueItem['product_img']; ?>" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title"><?= $catalogueItem['product_name']; ?></h5>
                     <p class="card-text"><?= $catalogueItem['product_price']; ?></p><span>Руб.</span>

@@ -23,6 +23,7 @@ class CatalogueController {
     {
         $title = 'Каталог';
         $catalogue = $this->catalogueModel->getAll();
+        //$catalogue = $this->catalogueModel->getAllFilter()
         $categories = $this->categoryModel->getAll();
         $producers= $this->producerModel->getAll();
         include_once('./views/catalogue/index.php');

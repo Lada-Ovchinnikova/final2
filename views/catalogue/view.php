@@ -12,7 +12,7 @@
 <!--</div>-->
 <div>
     <div class="container cust-container cart-table">
-        <img src="../../assets/img/product_<?= $productItem['product_sku']; ?>.jpg" class="rounded cust-card-img" alt="...">
+        <img src="../../assets/img/<?= $productItem['product_img']; ?>" class="rounded cust-card-img" alt="...">
         <div>
             <h5 class="card-title cust-card-title"><?= $productItem['product_name']; ?></h5>
             <div class="cust-card-price">
@@ -40,25 +40,14 @@
                     >
                     <span class="qty-plus">+</span>
                 </div>
-
-
                 <!--<button type="button" class="cart-add">
                     Добавить в корзину
                 </button>-->
 
-
                 <button product_id="<?= $productItem['product_id']; ?>" product_sku="<?= $productItem['product_sku']; ?>" product_img="product_<?= $productItem['product_sku']; ?>.jpg" product_price="<?= $productItem['product_price']; ?>" product_name="<?= $productItem['product_name']; ?>" product_weight="<?= $productItem['product_weight']; ?>" type="button" class="cart-add" id="">
                     Добавить в корзину
                 </button>
-
-
             </div>
-
-
-
-
-
-
             <div class="cust-card-weight">
                 <p class="card-text"><?= $productItem['product_weight']; ?></p>
                 <span>Гр.</span>
