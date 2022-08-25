@@ -1,14 +1,20 @@
-.visually-hidden-cost {
+.visually-hidden-cust {
     position: absolute;
     width: 1px;
     height: 1px;
     margin: -1px;
     border: 0;
     padding: 0;
+    padding: 0;
     white-space: nowrap;
     clip-path: inset(100%);
     clip: rect(0 0 0 0);
     overflow: hidden;
+
+}
+
+.product-form {
+    position: relative;
 }
 
 .cust-card-img {
@@ -22,23 +28,23 @@
 
 }
 .cust-card-title {
-    font-width: bold;
-    font-size: 1.6rem;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 22px;
+    text-decoration: none;
+    color: #000000;
 }
 .cust-card-price {
     font-weight: bold;
-    font-size: 1.2rem;
-}
-.cust-card-price p {
-    display: inline-block;
-
+    font-size: 18px;
+    line-height: 22px;
 }
 .cust-card-weight {
-    display: flex;
+
+    font-size: 18px;
+    line-height: 22px;
 }
-.cust-card-weight p {
-    margin-right: 10px;
-}
+
 .cart {
     padding-left: 1rem;
     max-width: 100%;
@@ -123,4 +129,62 @@
 .item-headings {
     display: flex;
 }
+.header-top {
+    min-height: 84px;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ededed;
+}
+.logo-zaglushka{
+    width: 165px;
+    height: 35px;
+    background-color: red;
+}
 
+.container-auth {
+    width: 540px;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.container-reg {
+    width: 800px;
+    padding-right: var(--bs-gutter-x, 0.75rem);
+    padding-left: var(--bs-gutter-x, 0.75rem);
+    margin-right: auto;
+    margin-left: auto;
+}
+.reg-line {
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /*min-width: 0;*/
+    word-wrap: break-word;
+    /*background-color: #fff;*/
+    /*background-clip: border-box;*/
+    /*border: 1pxsolidrgba(0,0,0,.125);*/
+    border-radius: 0.25rem;
+}
+.card-body {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: .25rem !important;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+}
+.filter-header {
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}

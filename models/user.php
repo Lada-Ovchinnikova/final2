@@ -29,11 +29,12 @@ class user
         return mysqli_fetch_assoc($result)['COUNT'];
     }
 
-    public function register($login, $email, $password)
+    public function register($name, $login, $email, $password)
     {
         $query = "
             INSERT INTO `users`
-                SET `user_login` = '$login',
+                SET `user_name` = '$name',
+                `user_login` = '$login',
                 `user_email` = '$email',
                 `user_password` = '$password',
                 `user_status` = 1;
@@ -157,7 +158,7 @@ class user
         //echo "изначально я здесь";
         if (isset($_COOKIE['ustatus'])) {
             $statusId= $_COOKIE['ustatus'];
-            echo $statusId;
+            //echo $statusId;
             if ($statusId == 2) {
                 $isAdmin = 2;
                 //echo ($_COOKIE['ustatus']);
@@ -234,4 +235,5 @@ class user
     {
         isset($value) ? $value : "Другое значение";
     }
+
 }

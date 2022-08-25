@@ -16,13 +16,15 @@ class UserController {
 
     public function actionReg()
     {
-        $title = 'Регистрация';
+        $title = 'Регистрация нового пользователя';
         $errors = [];
         if (isset($_POST['user_login'])) {
             //$connect = getConnection();
 
             $login = htmlentities($_POST['user_login']);
             $login = mysqli_real_escape_string($this->connection, $login);
+            $name = htmlentities($_POST['user_name']);
+            $name = mysqli_real_escape_string($this->connection, $name);
             $email = htmlentities($_POST['user_email']);
             $email = mysqli_real_escape_string($this->connection, $email);
             $password = htmlentities($_POST['user_password']);
@@ -66,18 +68,11 @@ class UserController {
                 }
                 if (empty($errors)) {
                     $password = md5($password);
-                    $userId = $this->userModel->register($login, $email, $password);
+                    $userId = $this->userModel->register($name, $login, $email, $password);
                     $userStatus = $this->userModel->getStatus($userId);
                     $this->userModel->auth($userId, $userStatus);
                     $this->userModel->userIsAdmin($userStatus);
-                    /*$query = "
-                    INSERT INTO `users`
-                        SET `user_login` = '$login',
-                        `user_email` = '$email',
-                        `user_password` = '$password';
-                    ";
-                    mysqli_query($connect, $query);*/
-                   header('Location:  ' . FULL_SITE_ROOT . 'reg');
+                    header('Location:  ' . FULL_SITE_ROOT . 'reg');
                 }
 
             }
@@ -161,6 +156,12 @@ class UserController {
         $this->userModel->logout();
         header('Location:  ' . FULL_SITE_ROOT . 'catalogues');
         include_once('./views/user/logout.php');
+    }
+
+    public function actionAgreement()
+    {
+        $title = '';
+        include_once('./views/user/agreement.php');
     }
 
 }

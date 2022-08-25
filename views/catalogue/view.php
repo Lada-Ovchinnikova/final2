@@ -1,16 +1,23 @@
 
 <? include_once("./views/common/header.php"); ?>
-<!--<div class="card" style="width: 18rem;">-->
-<!--    <img src="../../assets/img/product_--><?//= $productItem['product_sku']; ?><!--.jpg" class="card-img-top rounded cust-main-img" alt="...">-->
-<!--    <div class="card-body">-->
-<!--        <h5 class="card-title">--><?//= $productItem['product_name'] ; ?><!--</h5>-->
-<!---->
-<!--        <p class="card-text">--><?//= $productItem['product_price']; ?><!--</p><span>Руб.</span>-->
-<!--        <p class="card-text">--><?//= $productItem['product_weight']; ?><!--</p><span>Гр.</span>-->
-<!---->
-<!--    </div>-->
-<!--</div>-->
 <div>
+    <div class="holder">
+        <div class="content-page">
+            <div class="row">
+                <div class="col-6">
+                    <img src="../../assets/img/<?= $productItem['product_img']; ?>" class="rounded cust-card-img" alt="...">
+                </div>
+                <div class="col-6">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <div class="container cust-container cart-table">
         <img src="../../assets/img/<?= $productItem['product_img']; ?>" class="rounded cust-card-img" alt="...">
         <div>

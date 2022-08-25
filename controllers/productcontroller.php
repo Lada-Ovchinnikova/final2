@@ -78,7 +78,7 @@ class ProductController {
             $weight = htmlentities($_POST['product_weight']);
             $category = htmlentities($_POST['product_category']);
             $producer = htmlentities($_POST['product_producer']);
-            $img = ['product_img'];
+            $img = htmlentities($_POST['product_img']);
             if (empty($errors)) {
                 $this->productModel->editProduct(array(
                     'name' => $name,
@@ -92,7 +92,7 @@ class ProductController {
                     'img' => $img
                 ), $product, $id);
             }
-            //header('Location:  ' . FULL_SITE_ROOT . 'products');
+            header('Location:  ' . FULL_SITE_ROOT . 'products');
 
         }
 

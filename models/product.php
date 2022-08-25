@@ -62,62 +62,37 @@ LEFT JOIN `categories` ON `category_id` = `product_category_id`;
 
     public function editProduct( $data, $oldData, $id)
     {
-        //$checkingImg = "$data[img]";
-//        $n = preg_replace('/\..+$/u', '', $checkingImg);
-//        $sku = "$data[sku]";
+        $checkingImg = "$data[img]";
+        $updatedCheckingName = preg_replace('/\..+$/u', '', $checkingImg);
+        $sku = "product_$data[sku]";
+        if (!$_FILES['product_img_file']['tmp_name']) {
+            if ($updatedCheckingName === $sku) {
+                $newName = "product_$data[sku]" . ".jpg";
+            } else {
+                $newName = "product_none.png";
+            }
 
-        print_r($data) ;
-//        echo '<br/>';
-//        echo $sku;
-//        if (!$_FILES['product_img']['tmp_name']) {
-//            if ($n === $sku) {
-//                $newName = "product_$data[sku]" . ".jpg";
-//            } else {
-//                $newName = "product_none.png";
-//            }
-//            echo $newName;
-//        } else {
-//            $newName = "product_$data[sku]" . ".jpg";
-//            echo $newName;
-//        }
-//        if ($_FILES['product_img']['tmp_name']) {
-//
-//
-//            // = "product_$data[sku]";
-//            //echo $checkingName;
-//            //$filename = 'C:\\xampp\\htdocs\\final\\assets\\img\\' . $checkingName . '.jpg';
-//            //echo $filename;
-//            echo "временное имя существует и добавилась новая картинка";
-//            //if ($filename) {
-//                //unlink($filename);
-//                //$newName = "product_$data[sku]";
-//                //$tmp_name = $_FILES['product_img']['tmp_name'];
-//                //move_uploaded_file($tmp_name, "././assets/img/" . $newName . ".jpg");
-//           // }
-//        } else {
-//            echo " картинки не было и врем. имени тоже нет";
-//        }
-
-//        $newName = "product_$data[sku]";
-//        $tmp_name = $_FILES['product_img']['tmp_name'];
-//        move_uploaded_file($tmp_name, "././assets/img/" . $newName . ".jpg");
-
-
-
-//        $query = "
-//                UPDATE `products`
-//                SET `product_name` = '$data[name]',
-//                    `product_sku` = '$data[sku]',
-//                    `product_desc` = '$data[desc]',
-//                    `product_count` = '$data[count]',
-//                    `product_price` = '$data[price]]',
-//                    `product_weight` = '$data[weight]',
-//                    `product_category_id` = '$data[category]',
-//                    `product_producer_id` = '$data[producer]',
-            //        `product_img` = '$newName';
-//                WHERE `product_id` = $id;
-//            ";
-//        return mysqli_query($this->connect, $query);
+        } else {
+            $newName = "product_$data[sku]" . ".jpg";
+            $tmp_name = $_FILES['product_img_file']['tmp_name'];
+            move_uploaded_file($tmp_name, "././assets/img/" . $newName);
+        }
+        //echo $newName;
+        $query = "
+                UPDATE `products`
+                SET `product_name` = '$data[name]',
+                    `product_sku` = '$data[sku]',
+                    `product_desc` = '$data[desc]',
+                    `product_count` = '$data[count]',
+                    `product_price` = '$data[price]]',
+                    `product_weight` = '$data[weight]',
+                    `product_category_id` = '$data[category]',
+                    `product_producer_id` = '$data[producer]',
+                    `product_img` = '$newName'
+                WHERE `product_id` = $id;
+            ";
+        //echo $query;
+        return mysqli_query($this->connect, $query);
 
     }
 }

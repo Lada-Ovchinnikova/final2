@@ -39,5 +39,6 @@ $routes = array (
         'orders' => 'history',
         'order/view/([0-9]+)' => 'view/$1',
         'logout' => 'logout',
+        'agreement' => 'agreement'
     )
 );

@@ -23,9 +23,10 @@ class CatalogueController {
     {
         $title = 'Каталог';
         $catalogue = $this->catalogueModel->getAll();
-        //$catalogue = $this->catalogueModel->getAllFilter()
+
         $categories = $this->categoryModel->getAll();
         $producers= $this->producerModel->getAll();
+        $catalogue = $this->catalogueModel->getAllFilter();
         include_once('./views/catalogue/index.php');
     }
 
@@ -47,15 +48,4 @@ class CatalogueController {
         include_once('./views/catalogue/view.php');
     }
 
-    public function actionFilter($producerId)
-    {
-        if ($_GET['producerId']) {
-
-            $producerId = (_GET['producerId']);
-
-            $this->catalogueModel->getByParameters($producerId);
-            include_once('./views/catalogue/test.php');
-
-        }
-    }
 }
