@@ -49,6 +49,15 @@ class Cart
 	        $dbValues
 	    ";
         return  mysqli_query($this->connect, $query);
-}
+    }
+    public function getAddresses()
+    {
+        $query = "
+            SELECT  *
+            FROM `addresses`;
+            ";
+        $result = mysqli_query($this->connect, $query);
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
+    }
 }
 

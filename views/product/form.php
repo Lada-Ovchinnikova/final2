@@ -1,4 +1,4 @@
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
 <div class="container container-md">
 
 </div>
@@ -89,7 +89,7 @@
 <!--                        type="text"-->
 <!--                        class="form-control"-->
 <!--                        placeholder="2"-->
-<!--                        value="--><?//= isset($product['product_id']) ?  $product['product_count'] : '' ?><!--"-->
+<!--                        value="--><?php //= isset($product['product_id']) ?  $product['product_count'] : '' ?><!--"-->
 <!--                        name="product_count"/>-->
 <!--            </div>-->
 <!---->
@@ -103,7 +103,7 @@
 <!--                        type="text"-->
 <!--                        class="form-control"-->
 <!--                        placeholder="690"-->
-<!--                        value="--><?//= isset($product['product_id']) ?  $product['product_price'] : '' ?><!--"-->
+<!--                        value="--><?php //= isset($product['product_id']) ?  $product['product_price'] : '' ?><!--"-->
 <!--                        name="product_price"/>-->
 <!--            </div>-->
 <!---->
@@ -117,7 +117,7 @@
 <!--                        type="text"-->
 <!--                        class="form-control"-->
 <!--                        placeholder="1300"-->
-<!--                        value="--><?//= isset($product['product_id']) ?  $product['product_weight'] : '' ?><!--"-->
+<!--                        value="--><?php //= isset($product['product_id']) ?  $product['product_weight'] : '' ?><!--"-->
 <!--                        name="product_weight"/>-->
 <!--            </div>-->
 <!--        </div>-->
@@ -127,21 +127,21 @@
             <div class="col-6">
                 <label for="productCategory" class="form-label col-sm-2 col-form-label">Категория</label>
                 <select name="product_category" class="form-select" id="productCategory">
-                    <? foreach ($categories as $category): ?>
+                    <?php foreach ($categories as $category): ?>
                         <option value="<?= $category['category_id']; ?>"
                             <?= isset($product) ? (($category['category_id'] === $product['product_category_id']) ? 'selected' : '')  : '' ?>>
                             <?= $category['category_name']; ?></option>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </div>
             <div class="col-6">
                 <label for="productProducer" class="form-label col-sm-2 col-form-label">Производитель</label>
                 <select name="product_producer" class="form-select" id="productProducer">
-                    <? foreach ($producers as $producer): ?>
+                    <?php foreach ($producers as $producer): ?>
                         <option value="<?= $producer['producer_id']; ?>"
                             <?= isset($product) ? (($producer['producer_id'] === $product['product_producer_id']) ? 'selected' : '')  : '' ?>>
                             <?= $producer['producer_name']; ?></option>
-                    <? endforeach; ?>
+                    <?php endforeach; ?>
                 </select>
             </div>
         </div>
@@ -175,4 +175,4 @@
 
     </form>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>

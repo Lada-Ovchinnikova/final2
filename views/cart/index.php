@@ -1,76 +1,75 @@
-<? include_once("./views/common/header.php"); ?>
-<? if (!empty($items)): ?>
+<?php include_once("./views/common/header.php"); ?>
+<?php if (!empty($items)): ?>
 <form action="C:\xampp\htdocs\final\controllers\cartcontroller.php" method="post">
-
      <div class="cart-table">
-        <div class ="actionss">
-            <div class="item-headings">
-                <div class="item-img1">
-                </div>
-                <div class="item-desc">
-                </div>
-                <div class="item-price">
-                    <span class="">Цена за шт.</span>
-                </div>
-                <div class="item-amount">
-                    <span class="">Количесво</span>
-                </div>
-                <div class="item-final">
-                    <span class="">Итого</span>
-                </div>
-            </div>
-            <? foreach ($items as $item): ?>
-            <div class="item" >
-                <input
-                        type="text"
-                        class="form-control visually-hidden-cost"
-                        placeholder="name"
-                        value="<?= $item['id']; ?>"
-                        name="product_id"/>
-                <div class="item-img">
-                    <img src="././assets/img/<?= $item['img']; ?>" alt="" class="img-sample">
-                </div>
-                <div class="item-desc">
-                    <p class="item-title"><?= $item['name']; ?></p>
-                    <span class="item-weight"><?= $item['weight']; ?> г.</span>
-                    <span class="item-del js-del" product_id="<?= $item['id']; ?>">Удалить</span>
-                </div>
-                <div class="item-price">
-                    <span class="item-price  price-for-<?= $item['id']; ?>"><?= $item['price']; ?></span> <span>p.</span>
-                </div>
-                <div class="item-amount">
-                    <div class="qty counter-control">
-                        <span class="qty-minus qty-id cart-qty-minus" product_id="<?= $item['id']; ?>">-</span>
-                        <input class="item-amount-qty qty-value add-itm-cart"
-                               product_id="<?= $item['id']; ?>" product_sku="<?= $item['img']; ?>" product_img="product_<?= $item['img']; ?>.jpg" product_price="<?= $item['price']; ?>" product_name="<?= $item['name']; ?>" product_weight="<?= $item['weight']; ?>"
-                               type="text" value="<?= $item['qty']; ?>" id="counter_input" readonly>
-                        <span class="qty-plus qty-id cart-qty-plus" product_id="<?= $item['id']; ?>">+</span>
+         <div class="row cust-cart-items">
+             <div class="col-12 col-lg-8">
+                 <?php foreach ($items as $item): ?>
+                    <div class="cust-cart-item">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="././assets/img/<?= $item['img']; ?>" alt="" class="img-sample">
+                            </div>
+                            <div class="col-8">
+                                <div class="cust-cart-item-content-container">
+                                    <div class="cust-cart-item-content">
+                                        <a href="<?= FULL_SITE_ROOT . 'catalogue/view/' . $item['id']; ?>" class="cust-cart-item-name"><?= $item['name']; ?></a>
+                                        <div>
+                                            <span class="item-price  price-for-<?= $item['id']; ?>"><?= $item['price']; ?></span>
+                                            <span> p. / шт.</span>
+                                        </div>
+                                    </div>
+                                    <div class="item-final cust-cart-item-final">
+                                        <span class="item-final-price final-price-for-<?= $item['id']; ?>"><?= $item['final']; ?></span> <span>p.</span>
+                                    </div>
+                                </div>
+                                <div class="qty counter-control cust-cart-counter">
+                                    <span class="qty-minus qty-id cart-qty-minus" product_id="<?= $item['id']; ?>">-</span>
+                                    <input class="item-amount-qty qty-value add-itm-cart cust-cart-amount"
+                                           product_id="<?= $item['id']; ?>" product_sku="<?= $item['img']; ?>" product_img="product_<?= $item['img']; ?>.jpg" product_price="<?= $item['price']; ?>" product_name="<?= $item['name']; ?>" product_weight="<?= $item['weight']; ?>"
+                                           type="text" value="<?= $item['qty']; ?>" id="counter_input" readonly>
+                                    <span class="qty-plus qty-id cart-qty-plus" product_id="<?= $item['id']; ?>">+</span>
+                                </div>
+                                <div class="cust-cart-item-remove-container">
+                                    <span class="item-del js-del cust-cart-item-remove-button" product_id="<?= $item['id']; ?>">Удалить</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                 <?php endforeach; ?>
+             </div>
+            <div class="col-12 col-lg-4">
+                <div class="cust-cart-total">
+                    <div class="cart-total-wrapper">
+                        <p class="cust-cart-total-text">Ваша корзина</p>
+                    </div>
+                    <div class="cust-cart-total-final-wrapper">
+                        <span class="cust-cart-total-final">Итого</span>
+                        <div>
+                            <span class="cart-total-sum"> <?= $this->item; ?></span>
+                            <span>p.</span>
+                        </div>
+                    </div>
+                    <div class="cust-cart-total-text-content">
+                        <p>Варианты доставки будут указаны далее при оформлении заказа</p>
+                    </div>
+                    <div class="cust-cart-submit">
+<!--                        <button class="cust-cart-submit-button" type="submit" name="submit">Оформить заказ</button>-->
+                        <a class="cust-cart-submit-button" href="<?= FULL_SITE_ROOT . 'cart/delivery'; ?>">Оформить заказ</a>
                     </div>
                 </div>
-                <div class="item-final">
-                    <span class="item-final-price final-price-for-<?= $item['id']; ?>"><?= $item['final']; ?></span> <span>p.</span>
+                <div class="cust-cart-back">
+                    <a class="cust-cart-back-button" href="<?= FULL_SITE_ROOT . 'catalogues'; ?>">Перейти назад в магазин</a>
                 </div>
             </div>
-            <? endforeach; ?>
+         </div>
 
-        </div>
-    </div>
-    <div class="cart-total">
-        <div class="cart-total-wrapper">
-            <p class="cart-total-text">Ваша корзина</p>
-        </div>
-        <div class="cart-total-final-wrapper">
-            <span class="cart-total-final">Итого</span>
-            <span class="cart-total-sum"> <?= $this->item; ?></span> <span>p.</span>
-        </div>
-        <div class="cart-submit">
-            <button type="submit" name="submit">Оформить заказ</button>
-        </div>
-    </div>
 </form>
-<?else: ?>
-<span>ffffff</span>
-<?endif; ?>
+<?php else: ?>
+<span>Ваша корзина пуста</span>
+<?php endif; ?>
 
 
 
@@ -91,4 +90,4 @@
 //print_r($_COOKIE);
 ?>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>

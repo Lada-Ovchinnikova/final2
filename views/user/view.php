@@ -1,7 +1,6 @@
-
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
 <div>
-    <? if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
+    <?php if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
         <table >
             <thead>
             <tr>
@@ -11,12 +10,12 @@
             </tr>
             </thead>
             <tbody>
-                <td><? echo $products[0]['user_name']; ?></td>
-                <td><? echo $products[0]['user_phone']; ?></td>
-                <td><? echo $products[0]['user_email']; ?></td>
+                <td><?php echo $products[0]['user_name']; ?></td>
+                <td><?php echo $products[0]['user_phone']; ?></td>
+                <td><?php echo $products[0]['user_email']; ?></td>
             </tbody>
         </table>
-    <?endif; ?>
+    <?php endif; ?>
     <table >
         <thead>
         <tr>
@@ -28,18 +27,18 @@
         </thead>
         <tbody>
 
-        <? foreach ($products as $product): ?>
+        <?php foreach ($products as $product): ?>
             <tr>
                 <td><?= $product['order_product_name']; ?></td>
                 <td><?= $product['order_product_price']; ?></td>
                 <td><?= $product['order_product_qty']; ?></td>
                 <td><?= $product['order_product_total_price']; ?></td>
             </tr>
-        <? endforeach; ?>
+        <?php endforeach; ?>
 
         </tbody>
     </table>
 </div>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>
 

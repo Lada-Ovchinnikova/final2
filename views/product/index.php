@@ -1,4 +1,4 @@
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
 
 <table >
     <thead>
@@ -19,7 +19,7 @@
     </tr>
     </thead>
     <tbody>
-    <? foreach ($products as $product): ?>
+    <?php foreach ($products as $product): ?>
         <tr>
             <td><?= $product['product_id']; ?></td>
             <td><?= $product['product_name']; ?></td>
@@ -35,9 +35,9 @@
                     <button class="btn btn-danger" onclick="remove('<?= "product"; ?>', <?= $product['product_id']; ?>)">Delete</button>
                 </td>
         </tr>
-    <? endforeach; ?>
+    <?php endforeach; ?>
 
     </tbody>
 </table>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>

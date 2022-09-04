@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="<?= LIBS . 'bootstrap/css/bootstrap.css'; ?>" />
     <script src="<?= LIBS . 'bootstrap/js/bootstrap.js'; ?>"></script>
 </head>
-<body>
+<body class="container">
 <div class="container-fluid">
     <div class="header-top">
         <div class="header-top-content">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-3 col-md-4 col-lg-5 d-flex justify-content-end">
                     <div class="row align-items-center">
-                        <? if (!$this->isAuthorized==true): ?>
+                        <?php if (!$this->isAuthorized==true): ?>
                             <div class="header-login col-auto">
                                 <a class="btn btn-sm btn-icon pl-0 pr-0 "  <?= $title === 'История заказов' ? 'active' : ''; ?>" href="<?= FULL_SITE_ROOT . 'auth'; ?>">
                                     <i class="fas fa-sign-in-alt"></i>
@@ -44,14 +44,14 @@
                                     <span>Регистрация</span>
                                 </a>
                             </div>
-                        <?else: ?>
+                        <?php else: ?>
                             <div class="header-logout col-auto">
                                 <a href="<?= FULL_SITE_ROOT . 'logout'; ?>" class="btn btn-sm btn-icon pl-0 pr-0 <?= $title === 'Выйти' ? 'active' : ''; ?>">
                                     <i class="fas fa-sign-out-alt"></i>
                                     <span>Выйти</span>
                                 </a>
                             </div>
-                        <?endif; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                     <a class="nav-link <?= $title === 'policy' ? 'active' : ''; ?>" aria-current="page" href="<?= FULL_SITE_ROOT . 'agreement'; ?>">policy</a>
                 </li>
 
-                <? if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
+                <?php if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Категории</a>
                     <ul class="dropdown-menu">
@@ -97,8 +97,8 @@
                         <li><a class="dropdown-item <?= $title === 'Добавить Производителя' ? 'active' : ''; ?>" href="<?= FULL_SITE_ROOT . 'producer/add'; ?>">Добавить товар</a></li>
                     </ul>
                 </li>
-                <?endif; ?>
-                <? if ($this->isAuthorized==true and $this->isAdmin ==1): ?>
+                <?php endif; ?>
+                <?php if ($this->isAuthorized==true and $this->isAdmin ==1): ?>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Пользователь</a>
                     <ul class="dropdown-menu">
@@ -107,26 +107,30 @@
                     </ul>
                 </li>
 
-                <?endif; ?>
-                <? if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
+                <?php endif; ?>
+                <?php if ($this->isAuthorized==true and $this->isAdmin ==2): ?>
                     <li class="nav-item">
                         <a class="nav-link <?= $title === 'История заказов' ? 'active' : ''; ?>" href="<?= FULL_SITE_ROOT . 'orders'; ?>" >История заказов</a>
                     </li>
-                <?endif; ?>
-<!--                --><?// if ($this->isAuthorized==true and $this->isAdmin ==1): ?>
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link --><?//= $title === 'Корзина' ? 'active' : ''; ?><!--" aria-current="page" href="--><?//= FULL_SITE_ROOT . 'carts'; ?><!--">Корзина</a>-->
-<!--                </li>-->
-<!--                --><?//endif; ?>
+                <?php endif; ?>
+                <?php  if ($this->isAuthorized==true and $this->isAdmin ==1): ?>
+                <li class="nav-item">
+                    <a class="nav-link <?= $title === 'Корзина' ? 'active' : ''; ?>" aria-current="page" href="
+                <?= FULL_SITE_ROOT . 'carts'; ?>">Корзина</a>
+                </li>
+                <?php endif; ?>
 <!--                <li class="nav-item dropdown">-->
 <!--                    <a class="nav-link dropdown-toggle " data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Войти/Выйти</a>-->
 <!--                    <ul class="dropdown-menu">-->
-<!--                        --><?// if (!$this->isAuthorized==true): ?>
-<!--                        <li><a class="dropdown-item  --><?//= $title === 'Регистрация' ? 'active' : ''; ?><!--"  href="--><?//= FULL_SITE_ROOT . 'reg'; ?><!--">Регистрация</a></li>-->
-<!--                        <li><a class="dropdown-item --><?//= $title === 'История заказов' ? 'active' : ''; ?><!--" href="--><?//= FULL_SITE_ROOT . 'auth'; ?><!--">Авторизация</a></li>-->
-<!--                        --><?//else: ?>
-<!--                        <li><a class="dropdown-item  --><?//= $title === 'Выйти' ? 'active' : ''; ?><!--"  href="--><?//= FULL_SITE_ROOT . 'logout'; ?><!--">Выйти</a></li>-->
-<!--                        --><?//endif; ?>
+<!--                        --><?php // if (!$this->isAuthorized==true): ?>
+<!--                        <li><a class="dropdown-item  --><?php //= $title === 'Регистрация' ? 'active' : ''; ?><!--"  href="-->
+                <?php //= FULL_SITE_ROOT . 'reg'; ?><!--">Регистрация</a></li>-->
+<!--                        <li><a class="dropdown-item --><?php //= $title === 'История заказов' ? 'active' : ''; ?><!--" href="-->
+                <?php //= FULL_SITE_ROOT . 'auth'; ?><!--">Авторизация</a></li>-->
+<!--                        --><?php //else: ?>
+<!--                        <li><a class="dropdown-item  --><?php //= $title === 'Выйти' ? 'active' : ''; ?><!--"  href="-->
+                <?php //= FULL_SITE_ROOT . 'logout'; ?><!--">Выйти</a></li>-->
+<!--                        --><?php //endif; ?>
                     </ul>
                 </li>
             </ul>

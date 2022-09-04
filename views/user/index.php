@@ -1,4 +1,4 @@
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
     <form  method="POST">
         <input
             type="text"
@@ -36,4 +36,4 @@
 
     </form>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>

@@ -1,4 +1,4 @@
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
 <div class="container col-md-6">
     <h1>Пользовательское соглашение и Политика конфиденциальности</h1>
     <span>01.07.2017</span>
@@ -18,4 +18,4 @@
     <p>Благодарим Вас за проявленный интерес!</p>
 </div>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>

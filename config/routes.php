@@ -30,7 +30,9 @@ $routes = array (
     ),
     'CartController' => array (
         'carts' => 'index',
-        'cart/add' => 'add'
+        'cart/checkout' => 'checkout',
+        'cart/delivery' => 'delivery',
+
     ),
     'UserController' => array(
         'auth' => 'auth',

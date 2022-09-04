@@ -87,6 +87,7 @@ class Catalogue
     {
         $query = "
                 SELECT * FROM `products`
+                LEFT JOIN `producers` ON producer_id=product_producer_id
                 WHERE `product_id` = $id;
             ";
         $result = mysqli_query($this->connect, $query);

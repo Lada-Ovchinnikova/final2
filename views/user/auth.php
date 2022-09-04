@@ -1,12 +1,12 @@
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
 
-<?if (count($errors) > 0) : ?>
+<?php if (count($errors) > 0) : ?>
     <div class="errors" style="color: red">
-        <? foreach ($errors as $error): ?>
+        <?php foreach ($errors as $error): ?>
             <p><?= $error; ?></p>
-        <? endforeach; ?>
+        <?php endforeach; ?>
     </div>
-<? endif; ?>
+<?php endif; ?>
 <div class="container-auth">
     <p>Пожалуйста, авторизуйтесь:</p>
     <form  method="POST">
@@ -45,4 +45,4 @@
 </div>
 
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>

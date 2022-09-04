@@ -3,5 +3,5 @@
 <script src="<?= JS . 'all.min.js'; ?>"></script>
 
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->

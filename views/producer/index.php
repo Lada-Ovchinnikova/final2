@@ -1,4 +1,4 @@
-<? include_once("./views/common/header.php"); ?>
+<?php include_once("./views/common/header.php"); ?>
 
 <table >
     <thead>
@@ -11,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    <? foreach ($producers as $producer): ?>
+    <?php foreach ($producers as $producer): ?>
         <tr>
             <td><?= $producer['producer_id']; ?></td>
             <td><?= $producer['producer_name']; ?></td>
@@ -22,9 +22,9 @@
             </td>
 
         </tr>
-    <? endforeach; ?>
+    <?php endforeach; ?>
 
     </tbody>
 </table>
 
-<? include_once("./views/common/footer.php"); ?>
+<?php include_once("./views/common/footer.php"); ?>
