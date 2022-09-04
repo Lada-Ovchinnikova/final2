@@ -24,27 +24,25 @@ class CartController {
         include_once('./views/cart/index.php');
     }
 
-    public function actionAdd()
+    public function actionCheckout()
     {
+        $title = 'Оформление заказа';
 
-        $title = 'Корзина';
-        $items = $this->cartModel->getAll();
-        echo 'hhhh';
         if (isset($_POST['product_id'])) {
             $id = htmlentities($_POST['product_id']);
-            $this->cartModel->addOrder($id);
-
+             $this->cartModel->addOrder($id);
             //header('Location:  ' . FULL_SITE_ROOT . 'categories');
         }
-        include_once('./views/cart/index.php');
+
+        $items = $this->cartModel->getAll();
+        $addresses = $this->cartModel->getAddresses();
+        $userId = $this->userModel->getId();
+        $user = $this->userModel->getById($userId);
+
+        include_once('./views/cart/checkout.php');
     }
 
-//    public function actionCheckout()
-//    {
-//        $title = 'Заказ размещен';
-//        include_once('./views/cart/сheckout.php');
-//
-//    }
+
     public function actionDelivery()
     {
         $title = 'Доставка';

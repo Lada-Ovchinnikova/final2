@@ -43,11 +43,14 @@ class Cart
             $dbValues .=  "( " . $orderName . ", '" . $item['name'] . "', " . $id . ", " . $item['price'] . ", " . $item['final'] . "),";
         }
         $dbValues = substr($dbValues,0,-1);
+        echo '111111';
+        echo $dbValues;
         $query = "
             INSERT INTO `orders`( `order_name`, `order_product_name`, `order_product_qty`,  `order_product_price`, `order_product_total_price` )
 	    VALUES
 	        $dbValues
 	    ";
+        echo $query;
         return  mysqli_query($this->connect, $query);
     }
     public function getAddresses()
