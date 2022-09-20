@@ -177,7 +177,8 @@ class user
             $query = "
             SELECT `order_name` 
             FROM `orders`
-            WHERE  `order_user_id` = '$userId';
+            WHERE  `order_user_id` = '$userId'
+            GROUP BY `order_name`;
             ";
         } else {
 

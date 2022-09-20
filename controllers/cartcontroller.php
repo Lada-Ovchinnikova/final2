@@ -27,18 +27,6 @@ class CartController {
     public function actionCheckout()
     {
         $title = 'Оформление заказа';
-
-        if (isset($_POST['product_id'])) {
-            $id = htmlentities($_POST['product_id']);
-             $this->cartModel->addOrder($id);
-            //header('Location:  ' . FULL_SITE_ROOT . 'categories');
-        }
-
-        $items = $this->cartModel->getAll();
-        $addresses = $this->cartModel->getAddresses();
-        $userId = $this->userModel->getId();
-        $user = $this->userModel->getById($userId);
-
         include_once('./views/cart/checkout.php');
     }
 
@@ -46,33 +34,41 @@ class CartController {
     public function actionDelivery()
     {
         $title = 'Доставка';
+        $userId = $this->userModel->getId();
+        if (isset($_POST['product_id'])) {
+            $id = htmlentities($_POST['product_id']);
+            $address = htmlentities($_POST['delivery-pickpoint']);
+            $comment = htmlentities($_POST['order-comment']);
+            $this->cartModel->addOrder($userId,$address, $id, $comment);
+            header('Location:  ' . FULL_SITE_ROOT . 'checkout');
+        }
+
         $items = $this->cartModel->getAll();
         $addresses = $this->cartModel->getAddresses();
-        $userId = $this->userModel->getId();
+
         $user = $this->userModel->getById($userId);
 
 
         include_once('./views/cart/delivery.php');
     }
 
-    public function actionEdit($id)
-    {
-
-        if (!isset($id)) {
-            echo 'Страница не найдена!';
-            exit();
-        }
-        if (isset($_POST['category_name'])) {
-            $name = htmlentities($_POST['category_name']);
-            $this->categoryModel->editCategory($name, $id);
-            header('Location:  ' . FULL_SITE_ROOT . 'categories');
-        }
-
-        $title= 'Изменить категорию';
-        $category =  $this->categoryModel->getById($id);
-        include_once('./views/category/form.php');
-//        echo "Вызван метод ActionEdit с параметром $id";
-    }
+//    public function actionEdit($id)
+//    {
+//
+//        if (!isset($id)) {
+//            echo 'Страница не найдена!';
+//            exit();
+//        }
+//        if (isset($_POST['category_name'])) {
+//            $name = htmlentities($_POST['category_name']);
+//            $this->categoryModel->editCategory($name, $id);
+//            header('Location:  ' . FULL_SITE_ROOT . 'categories');
+//        }
+//
+//        $title= 'Изменить категорию';
+//        $category =  $this->categoryModel->getById($id);
+//        include_once('./views/category/form.php');
+//    }
 
 
 }

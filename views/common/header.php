@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="<?= LIBS . 'bootstrap/css/bootstrap.css'; ?>" />
     <script src="<?= LIBS . 'bootstrap/js/bootstrap.js'; ?>"></script>
 </head>
-<body class="container">
-<div class="container-fluid">
+<body>
+<div class="container">
     <div class="header-top">
         <div class="header-top-content">
             <div class="row align-items-center no-gutters">
@@ -60,7 +60,7 @@
     </div>
 </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
+    <div class="container">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

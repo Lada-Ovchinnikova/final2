@@ -1,7 +1,7 @@
 <?php include_once("./views/common/header.php"); ?>
 
 
-<div class="">
+<div class="container">
     <div class="row">
         <div class="col-12 col-lg-4 col-xl-3">
             <button class="btn btn-success cust-filter mb-4" id="filterButton">Фильтр</button>

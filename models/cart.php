@@ -33,20 +33,21 @@ class Cart
             }
     }
 
-    public function addOrder ($id)
+    public function addOrder ($userId, $address, $id, $comment)
     {
         $id = mysqli_real_escape_string($this->connect, $id);
         $orderName = mt_rand(333, 1556);
         $items = json_decode($_COOKIE['items'], true);
         $dbValues = '';
         foreach ($items as $item) {
-            $dbValues .=  "( " . $orderName . ", '" . $item['name'] . "', " . $id . ", " . $item['price'] . ", " . $item['final'] . "),";
+            $dbValues .=  "( ". $userId . ", " . $address . ", " . $orderName . ", '" . $item['name'] . "', " . $item['qty'] . ", " . $item['price'] . ", " . $item['final'] . ", '" . $comment . "'" . "),";
         }
         $dbValues = substr($dbValues,0,-1);
-        echo '111111';
+        print_r($items);
+        echo $address;
         echo $dbValues;
         $query = "
-            INSERT INTO `orders`( `order_name`, `order_product_name`, `order_product_qty`,  `order_product_price`, `order_product_total_price` )
+            INSERT INTO `orders`( `order_user_id`, `order_address_id`, `order_name`, `order_product_name`, `order_product_qty`,  `order_product_price`, `order_product_total_price`, `order_comment` )
 	    VALUES
 	        $dbValues
 	    ";

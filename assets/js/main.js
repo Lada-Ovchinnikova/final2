@@ -36,7 +36,7 @@ cartTable.addEventListener("click",
 
 cartTable.addEventListener("click",
     e => {
-    debugger
+    //debugger
         if(!e.target.classList.contains("qty-plus")) {
             return
         };
@@ -137,7 +137,7 @@ function addCokie() {
 };
 
 function updateAndSetCookie(newQty, id) {
-    debugger
+    //debugger
         let jsonArray = getCookie('items');
         let toNumberId = +id;
         itemsArray = JSON.parse(jsonArray);

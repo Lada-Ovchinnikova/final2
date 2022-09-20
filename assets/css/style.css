@@ -444,19 +444,51 @@ cust-card-title_desc {
     border-bottom: 2px solid grey;
 }
 .order-delivery-item.active {
-    border: 2px solid #C4675B;
+    border: 2px solid transparent;
 }
+
 .order-delivery-item .check-block {
-    width: 24px;
-    height: 24px;
-    display: none;
-    border-radius: 26px;
+    position: relative;
+}
+
+input[type="radio"]:checked,
+input[type="radio"]:not(:checked)
+{
     position: absolute;
-    right: 8px;
+    left: -9999px;
+}
+
+input[type="radio"]:checked + label:before,
+input[type="radio"]:not(:checked) + label:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+input[type="radio"]:checked + label:after,
+input[type="radio"]:not(:checked) + label:after {
+    content: "";
+    position: absolute;
+    right: 0%;
     top: 50%;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #C4675B;
+    background: url(../img/circle-check-solid.svg) no-repeat 95% 50%;
+    background-size: 25px;
     transition: all 0.3s ease;
     transform: translateY(-50%);
-    background: url(../img/circle-check-solid.svg) no-repeat center center;
+}
+
+input[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+}
+
+input[type="radio"]:checked + label:after {
+    opacity: 1;
 }
 
 .order-delivery-item.active .check-block {
@@ -465,7 +497,7 @@ cust-card-title_desc {
     justify-content: center;
 }
 .order-delivery-item input[type=radio] {
-    display: none;
+    /*display: none;*/
 }
 .order-delivery-address {
     margin-bottom: 10px;
@@ -557,6 +589,7 @@ cust-card-title_desc {
     color: #333;
     text-align: right;
 }
+.back-to-store,
 .order-submit {
     width: 100%;
     font-size: 16px !important;
@@ -566,6 +599,45 @@ cust-card-title_desc {
     padding: 12px 46px 15px !important;
     color: #FFFFFF !important;
     border-radius: 2.25rem !important;
+}
+
+/*страница с оформленным заказом. плашка что заказ оформлен*/
+.checkout-card {
+    padding: 15px;
+    border-radius: 20px;
+}
+
+/*footer*/
+.footer {
+    background-color: #6F5D56;
+    color: #ffffff;
+    padding-top: 50px;
+}
+.footer-heading {
+    margin-bottom: 15px;
+}
+.contacts-content {
+    display: block;
+}
+.bottom-menu-link {
+    text-decoration: none;
+    color: #ffffff;
+}
+.footer-slogan,
+.footer-contacts {
+    margin-bottom: 30px;
+}
+.footer-bottom-menu {
+    padding-bottom: 30px;
+}
+.footer-bottom-menu-item {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 568px) {
+    .footer-contacts {
+        order: 3;
+    }
 }
 
 @media (min-width: 768px) {
@@ -621,4 +693,10 @@ cust-card-title_desc {
         top: 20px;
         left: -27px;
     }
+    .footer-bottom-menu {
+        order: 3;
+    }
 }
+
+
+/*#603a28*/

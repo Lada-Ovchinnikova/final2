@@ -1,5 +1,5 @@
 <?php include_once("./views/common/header.php"); ?>
-<form action="C:\xampp\htdocs\final\controllers\cartcontroller.php" method="post">
+<form method="post">
     <div class="order cart-table">
         <div class="container-fluid">
             <div class="row">
@@ -12,6 +12,12 @@
                         <div class="cust-order-list">
                             <?php foreach ($items as $item): ?>
                                 <div class="cust-order-list-item">
+                                    <input
+                                            type="text"
+                                            class="form-control visually-hidden-cust"
+                                            placeholder="name"
+                                            value="<?= $item['id'] ?? '' ?>"
+                                            name="product_id"/>
                                     <a href="<?= FULL_SITE_ROOT . 'catalogue/view/' . $item['id']; ?>" class="cust-order-item-name"><?= $item['name']; ?></a>
                                     <div class="cust-order-item-info">
                                         <span class="cust-order-item-price"><?= $item['price']; ?> руб.</span>
@@ -27,14 +33,15 @@
                         <p class="order-list-title">Самовывоз</p>
                         <div class="order-delivery-wrapper">
                             <?php foreach ($addresses as $address): ?>
-                            <div class="order-delivery-item active" id="">
-                                <span class="check-block"></span>
-                                <input type="radio" name="delivery-pickpoint" value="" checked="">
-                                <p class="order-delivery-address"><?= $address['address_name']; ?></p>
-                                <p class="order-delivery-schedule"><?= $address['address_schedule']; ?></p>
-                                <!--Под вопросом-->
-                                <a href="#" class="order-delivery__map" data-gps-n="60.090449" data-gps-s="30.380028">Посмотреть на карте</a>
-                            </div>
+                                <div class="order-delivery-item active" id="">
+                                    <span class="check-block"></span>
+                                    <input class="check-block-input" type="radio" name="delivery-pickpoint" value="<?= $address['address_id']; ?>" id="radio-<?= $address['address_id']; ?>">
+                                    <label for="radio-<?= $address['address_id']; ?>"></label>
+                                    <p class="order-delivery-name"><?= $address['address_name']; ?></p>
+                                    <p class="order-delivery-schedule"><?= $address['address_schedule']; ?></p>
+                                    <p class="order-delivery-address"><?= $address['address_location']; ?></p>
+
+                                </div>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -51,7 +58,7 @@
                                 <input class="" value="<?= isset($user['user_id']) ?  $user['user_phone'] : '' ?>" type="text" placeholder="Телефон" name="ORDER_PROP_3" id="ORDER_PROP_3">
                             </div>
                             <div class="form-group textarea">
-                                <textarea class="" placeholder="Комментарий к заказу" name="ORDER_PROP_21" id="ORDER_PROP_21"></textarea>
+                                <textarea class="" placeholder="Комментарий к заказу" name="order-comment" id="order-comment"></textarea>
                             </div>
                         </div>
                     </div>
@@ -82,7 +89,7 @@
                             <span class="cart-price"><?= $this->item; ?> руб.</span>
                         </div>
                         <div class="cart-total-button-container d-block d-sm-none">
-                            <button type="button" class="btn order-submit btn-lg" id="">
+                            <button type="submit" class="btn order-submit btn-lg" id="">
                                 Оформить заказ
                             </button>
                         </div>
