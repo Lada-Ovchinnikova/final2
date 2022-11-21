@@ -18,7 +18,10 @@ ul {
     overflow: hidden;
     display: none;
 }
-
+.qty-plus,
+.qty-minus {
+    cursor: pointer;
+}
 .product-form {
     position: relative;
 }
@@ -193,13 +196,13 @@ ul {
 
 .cust-card-title_mobile {
     display: block;
-    font-size: 34px;
+    font-size: 24px;
     line-height: 40px;
     margin: 0 0 13px;
     font-weight: bold;
 }
 
-cust-card-title_desc {
+.cust-card-title_desc {
     display: none;
 }
 .cust-card-price {
@@ -210,19 +213,26 @@ cust-card-title_desc {
 }
 .cust-card-text {
     margin-right: 10px;
-    font-size: 25px;
+    font-size: 24px;
     line-height: 29px;
 }
 .cust-card-img {
     margin-bottom: 30px;
+    border-radius: 1rem ;
 }
 .cust-card-add {
     width: 100%;
     border-radius: 30px;
-    padding: 5px 15px;
+    padding: 7px 15px;
+    border: none;
+    color: #ffffff;
+    background-color: #C4675B;
+}
+.cust-card-add:hover {
+    background-color: #8f392d;
 }
 .cust-card-counter {
-    border: dashed 1px;
+    border: dashed 1px #C4675B;
     border-radius: 30px;
     padding: 7px 15px;
     display: flex;
@@ -238,10 +248,24 @@ cust-card-title_desc {
     margin-bottom: 20px;
 }
 .cust-card-act {
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
 .cust-card-feature {
     padding-left: 0 !important;
+}
+.cust-description {
+    margin-bottom: 70px;
+}
+.cust-description-heading {
+    font-size: 18px;
+    color: #C4675B;
+    margin-bottom: 13px;
+}
+.cust-description-text {
+    margin-bottom: 25px;
+}
+.cust-card-feature-title {
+    color: #C4675B;
 }
 /*Корзина*/
 
@@ -634,9 +658,30 @@ input[type="radio"]:checked + label:after {
     margin-bottom: 10px;
 }
 
+/*header*/
+.header-top-wrapper {
+    flex-direction: column;
+    position: relative;
+}
+.login-text,
+.reg-text {
+    display: none;
+}
+.header-login {
+    position: relative;
+    top: 50px;
+    left: 78%;
+    z-index: 1;
+}
+.header-user-wrapper {
+    width: 100%;
+}
 @media (min-width: 568px) {
     .footer-contacts {
         order: 3;
+    }
+    .cust-card-counter {
+        font-size: 1rem;
     }
 }
 
@@ -653,8 +698,9 @@ input[type="radio"]:checked + label:after {
         display: block;
         font-size: 28px;
         line-height: 34px;
-        margin: 0 0 13px;
+        margin: 0 0 40px 0 !important;
         font-weight: bold;
+
     }
     .cust-card-price {
         justify-content: start;

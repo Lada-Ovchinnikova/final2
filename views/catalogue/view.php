@@ -1,12 +1,12 @@
 <?php include_once("./views/common/header.php"); ?>
-<div>
+<div class="container">
     <div class="cart-table">
         <div class="holder cart-table">
             <div class="content-page">
                 <div class="row cust-view-card">
                     <div class="col-12 col-md-6">
                         <h5 class="card-title cust-card-title_mobile"><?= $productItem['product_name']; ?></h5>
-                        <img src="../../assets/img/<?= $productItem['product_img']; ?>" class="rounded cust-card-img" alt="...">
+                        <img src="../../assets/img/<?= $productItem['product_img']; ?>" class="cust-card-img" alt="...">
                     </div>
                     <div class="col-12 col-md-6 cust-card-content">
                         <h5 class="card-title cust-card-title_desc"><?= $productItem['product_name']; ?></h5>
@@ -34,8 +34,8 @@
                         <div class="cust-description">
                             <ul>
                                 <li>
-                                    <h6>Описание</h6>
-                                    <p><?= $productItem['product_desc']; ?></p>
+                                    <h6 class="cust-description-heading">Описание</h6>
+                                    <p class="cust-description-text"><?= $productItem['product_desc']; ?></p>
                                 </li>
                             </ul>
                             <ul class="row a">

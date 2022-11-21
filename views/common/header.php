@@ -14,7 +14,7 @@
 <div class="container">
     <div class="header-top">
         <div class="header-top-content">
-            <div class="row align-items-center no-gutters">
+            <div class="row align-items-center no-gutters header-top-wrapper">
                 <div class="col-3 col-md-4 col-lg-5">
                     <div class="row align-items-center">
                         <div class="header-phone col-auto pr-md-0">
@@ -29,19 +29,19 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-3 col-md-4 col-lg-5 d-flex justify-content-end">
-                    <div class="row align-items-center">
+                <div class="col-md-4 col-lg-5 d-flex ">
+                    <div class="row align-items-center header-user-wrapper">
                         <?php if (!$this->isAuthorized==true): ?>
                             <div class="header-login col-auto">
                                 <a class="btn btn-sm btn-icon pl-0 pr-0 "  <?= $title === 'История заказов' ? 'active' : ''; ?>" href="<?= FULL_SITE_ROOT . 'auth'; ?>">
-                                    <i class="fas fa-sign-in-alt"></i>
-                                    <span>Войти</span>
+                                    <i class="fas fa-sign-in-alt icon-login"></i>
+                                    <span class="login-text">Войти</span>
                                 </a>
                             </div>
                             <div class="header-reg col-auto">
                                 <a href="<?= FULL_SITE_ROOT . 'reg'; ?>" class="btn btn-sm btn-icon pl-0 pr-0 <?= $title === 'Регистрация' ? 'active' : ''; ?>">
-                                    <i class="far fa-user"></i>
-                                    <span>Регистрация</span>
+                                    <i class="far fa-user icon-reg"></i>
+                                    <span class="reg-text">Регистрация</span>
                                 </a>
                             </div>
                         <?php else: ?>
@@ -61,7 +61,6 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
