@@ -217,6 +217,7 @@ class user
             ";
         }
         $result = mysqli_query($this->connection, $query);
+//       print_r(mysqli_fetch_all($result, MYSQLI_ASSOC));
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 

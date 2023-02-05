@@ -20,9 +20,9 @@
         </div>
 
         <div class="mb-3 row">
-            <label for="inputPassword" class="col-sm-2 col-form-label">Пароль</label>
+            <label for="inputPassword" class="col-sm-2 col-form-label" >Пароль</label>
             <div class="col-sm-10">
-                <input type="password" class="form-control" name="user_password" id="inputPassword">
+                <input type="password" class="form-control" name="user_password" id="inputPassword" placeholder="Пароль">
             </div>
         </div>
 
@@ -38,7 +38,7 @@
 <!--        </div>-->
 
         <div class="col-auto">
-            <button type="submit" class="btn btn-success">Авторизироваться</button>
+            <button type="submit" class="btn btn-success cust-btn">Авторизироваться</button>
         </div>
 
     </form>

@@ -1,7 +1,5 @@
 <?php include_once("./views/common/header.php"); ?>
-<div class="container container-md">
-
-</div>
+<div class="container container-md container-product">
     <form  method="POST" enctype="multipart/form-data" class="product-form">
         <div class="mb-3 row">
             <label for="productName" class="form-label col-sm-2 col-form-label">Название</label>
@@ -124,7 +122,7 @@
 
 
         <div class="row">
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <label for="productCategory" class="form-label col-sm-2 col-form-label">Категория</label>
                 <select name="product_category" class="form-select" id="productCategory">
                     <?php foreach ($categories as $category): ?>
@@ -134,7 +132,7 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <label for="productProducer" class="form-label col-sm-2 col-form-label">Производитель</label>
                 <select name="product_producer" class="form-select" id="productProducer">
                     <?php foreach ($producers as $producer): ?>
@@ -174,5 +172,5 @@
         </div>
 
     </form>
-
+</div>
 <?php include_once("./views/common/footer.php"); ?>

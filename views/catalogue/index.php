@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12 col-lg-4 col-xl-3">
-            <button class="btn btn-success cust-filter mb-4" id="filterButton">Фильтр</button>
+            <button class="btn btn-success cust-filter-btn mb-4" id="filterButton">Фильтр</button>
             <form   action="" method="post" class="filter" id="filterContent">
                 <div class="filter-container">
                     <h2 class="filter-header">Категории</h2>
@@ -31,10 +31,10 @@
 
                 <div class="col-auto row filter-container just">
                     <div class="col-6 filter-btn">
-                        <button type="submit" class="btn btn-success">Применить</button>
+                        <button type="submit" class="btn btn-success cust-btn">Применить</button>
                     </div>
                     <div class="col-6 filter-btn">
-                        <button type="" class="btn btn-success">Очистить</button>
+                        <button type="" class="btn btn-success cust-btn">Очистить</button>
                     </div>
                 </div>
             </form>
@@ -42,7 +42,7 @@
         <div class="col col-lg-8 col-xl-9">
             <div class="row mb-3">
                 <?php foreach ($catalogue as $catalogueItem): ?>
-                    <div class="col-12 col-sm-6 col-xl-4">
+                    <div class="col-12 col-sm-6 col-xl-4 cust-card-wrapper">
                         <div class="mb-4 cust-card">
                             <div>
                                 <a href="<?= FULL_SITE_ROOT . 'catalogue/view/' . $catalogueItem['product_id']; ?>" class="">
@@ -54,8 +54,14 @@
                                     <?= $catalogueItem['product_name']; ?>
                                 </a>
                                 <div class="row pt-2">
+                                    <div class="col-12">
+                                        <span class="cust-card-producer"><?= $catalogueItem['producer_name']; ?></span>
+                                    </div>
+                                </div>
+                                <div class="row pt-2">
+
                                     <div class="col-6">
-                                       <span class="cust-card-price"><?= $catalogueItem['product_price']; ?>&nbsp;₽</span>
+                                       <span class="cust-card-catalogue-price"><?= $catalogueItem['product_price']; ?>&nbsp;₽</span>
                                     </div>
                                     <div class="col-6 text-end">
                                         <span class="card-text cust-card-weight"><?= $catalogueItem['product_weight']; ?>&nbsp;гр.</span>

@@ -9,9 +9,10 @@ class Catalogue
     }
     public function getAll()
     {
-            $query = "
+        $query = "
             SELECT  *
-            FROM `products`;
+            FROM `products`
+            LEFT JOIN `producers` ON producer_id=product_producer_id;
             ";
         $result = mysqli_query($this->connect, $query);
         //print_r(mysqli_fetch_all($result, MYSQLI_ASSOC));
@@ -75,7 +76,8 @@ class Catalogue
         if (empty($_POST['producerId']) and empty($_POST['categoryId'])) {
             $query = "
             SELECT  *
-            FROM `products`;
+            FROM `products`
+            LEFT JOIN `producers` ON producer_id=product_producer_id;
             ";
             $result = mysqli_query($this->connect, $query);
             return mysqli_fetch_all($result, MYSQLI_ASSOC);

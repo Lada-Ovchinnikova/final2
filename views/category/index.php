@@ -1,32 +1,20 @@
 <?php include_once("./views/common/header.php"); ?>
-
-<table >
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Категория</th>
-        <?php if ($this->isAuthorized): ?>
-            <th>
-                Действия
-            </th>
-        <?php endif; ?>
-    </tr>
-    </thead>
-    <tbody>
+<div class="container cust-container-category">
+<h1>Категория</h1>
+<ul class="list-group list-group-flush">
     <?php foreach ($categories as $category): ?>
-        <tr>
-            <td><?= $category['category_id']; ?></td>
-            <td><?= $category['category_name']; ?></td>
-            <?php if ($this->isAuthorized): ?>
-            <td>
-                <a class="btn btn-warning" href="<?= FULL_SITE_ROOT . 'category/edit/' . $category['category_id']; ?>">Edit</a>
-                <button class="btn btn-danger" onclick="remove('<?= "product"; ?>', <?= $category['category_id']; ?>)">Delete</button>
-            </td>
-            <?php endif; ?>
-        </tr>
+        <li class="list-group-item cust-list-item-category">
+            <div class="row">
+                <div class="col cust-item-category">
+                    <p class="cust-heading-category"><?= $category['category_name']; ?></p>
+                    <div class="cust-buttons-category">
+                        <a class="btn btn-warning cust-btn-edit" href="<?= FULL_SITE_ROOT . 'category/edit/' . $category['category_id']; ?>">Редактировать</a>
+                        <button class="btn btn-danger cust-btn-delete" onclick="remove('<?= "product"; ?>', <?= $category['category_id']; ?>)">Удалить</button>
+                    </div>
+                </div>
+            </div>
+        </li>
     <?php endforeach; ?>
-
-    </tbody>
-</table>
-
+</ul>
+</div>
 <?php include_once("./views/common/footer.php"); ?>
